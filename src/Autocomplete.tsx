@@ -34,6 +34,11 @@ function getScrollOffset() {
   };
 }
 
+export type InputProps = Omit<
+  React.HTMLAttributes<HTMLInputElement>,
+  "value" | "autoComplete" | "role" | "aria-autocomplete"
+>;
+
 export interface AutocompleteProps<ItemT = unknown> {
   /**
    * The items to display in the dropdown menu
@@ -107,12 +112,7 @@ export interface AutocompleteProps<ItemT = unknown> {
    * apply `props.ref` and all `props.on<event>` event handlers. Failing to do
    * this will cause `Autocomplete` to behave unexpectedly.
    */
-  renderInput?: <
-    PropsT extends Omit<
-      React.HTMLAttributes<HTMLInputElement>,
-      "value" | "autoComplete" | "role" | "aria-autocomplete"
-    >
-  >(
+  renderInput?: <PropsT extends InputProps>(
     props: PropsT
   ) => React.ReactElement;
   /**
@@ -124,10 +124,7 @@ export interface AutocompleteProps<ItemT = unknown> {
    * aria-autocomplete. `inputProps` is commonly used for (but not limited to)
    * placeholder, event handlers (onFocus, onBlur, etc.), autoFocus, etc..
    */
-  inputProps?: Omit<
-    React.HTMLAttributes<HTMLInputElement>,
-    "value" | "autoComplete" | "role" | "aria-autocomplete"
-  >;
+  inputProps?: InputProps;
   /**
    * Props that are applied to the element which wraps the `<input />` and
    * dropdown menu elements rendered by `Autocomplete`.
@@ -161,7 +158,7 @@ export interface AutocompleteProps<ItemT = unknown> {
    * fine-grained control over the dropdown menu dynamics.
    */
   open?: boolean;
-  debug: boolean;
+  debug?: boolean;
 }
 
 interface AutocompleteState {

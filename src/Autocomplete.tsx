@@ -169,7 +169,7 @@ interface AutocompleteState {
   menuWidth?: number;
 }
 
-class Autocomplete extends React.Component<
+export class Autocomplete extends React.Component<
   AutocompleteProps<unknown>,
   AutocompleteState
 > {
@@ -650,5 +650,3 @@ class Autocomplete extends React.Component<
     );
   }
 }
-
-export default Autocomplete;

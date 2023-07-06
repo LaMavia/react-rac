@@ -1,7 +1,7 @@
 {
   "name": "react-rac",
   "description": "Fork of react-autocomplete ported to react@18.x.x",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "files": [
     "dist"

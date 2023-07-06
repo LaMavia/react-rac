@@ -169,8 +169,8 @@ interface AutocompleteState {
   menuWidth?: number;
 }
 
-export class Autocomplete extends React.Component<
-  AutocompleteProps<unknown>,
+export class Autocomplete<ItemT = unknown> extends React.Component<
+  AutocompleteProps<ItemT>,
   AutocompleteState
 > {
   static defaultProps = {
@@ -212,7 +212,7 @@ export class Autocomplete extends React.Component<
   private _scrollOffset: any;
   private _scrollTimer: any;
 
-  constructor(props: AutocompleteProps<unknown>) {
+  constructor(props: AutocompleteProps<ItemT>) {
     super(props);
     this.state = {
       isOpen: false,

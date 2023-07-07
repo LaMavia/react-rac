@@ -37,7 +37,7 @@ function getScrollOffset() {
 export type InputProps = Omit<
   React.HTMLAttributes<HTMLInputElement>,
   "value" | "autoComplete" | "role" | "aria-autocomplete"
->;
+> & { className?: string };
 
 export interface AutocompleteProps<ItemT = unknown> {
   /**
@@ -159,6 +159,7 @@ export interface AutocompleteProps<ItemT = unknown> {
    */
   open?: boolean;
   debug?: boolean;
+  className?: string;
 }
 
 interface AutocompleteState {
@@ -612,7 +613,11 @@ export class Autocomplete<ItemT = unknown> extends React.Component<
     const { inputProps } = this.props;
     const open = this.isOpen();
     return (
-      <div style={{ ...this.props.wrapperStyle }} {...this.props.wrapperProps}>
+      <div
+        className={this.props.className}
+        style={{ ...this.props.wrapperStyle }}
+        {...this.props.wrapperProps}
+      >
         {this.props.renderInput({
           ...inputProps,
           role: "combobox",
